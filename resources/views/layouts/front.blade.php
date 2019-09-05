@@ -85,10 +85,10 @@
 @endforeach
 
 
-                        <li><a href="#" style="height: 75px; line-height: 75px;">الخدمات</a></li>
-                        <li><a href="#" style="height: 75px; line-height: 75px;">المتجر</a></li>
-                        <li><a href="#" style="height: 75px; line-height: 75px;">المعرض</a></li>
-                        <li><a href="#" style="height: 75px; line-height: 75px;">تواصل معنا</a></li>
+{{--                        <li><a href="#" style="height: 75px; line-height: 75px;">الخدمات</a></li>--}}
+{{--                        <li><a href="#" style="height: 75px; line-height: 75px;">المتجر</a></li>--}}
+{{--                        <li><a href="#" style="height: 75px; line-height: 75px;">المعرض</a></li>--}}
+{{--                        <li><a href="#" style="height: 75px; line-height: 75px;">تواصل معنا</a></li>--}}
                         <li>
                             <!-- End Sub -->
 
@@ -165,13 +165,13 @@
 
                             <ul class="clearlist widget-menu">
                                 <li>
-                                    <a href="#" title="">مركز المساعدة  </a>
+                                    <a href="{{route('sailpolicy')}}" title="">مركز المساعدة  </a>
                                 </li>
                                 <li>
-                                    <a href="#" title="">كيفية عمل طلب شراء  </a>
+                                    <a href="{{route('how_buy')}}" title="">كيفية عمل طلب شراء  </a>
                                 </li>
                                 <li>
-                                    <a href="#" title="">سياسة الشحن  </a>
+                                    <a href="{{route('policies')}}" title="">سياسة الشحن  </a>
                                 </li>
                             </ul>
 
@@ -191,13 +191,13 @@
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
                             <li>
-                                <a href="#" title="">انضم الينا </a>
+                                <a href="{{route('join_us')}}" title="">انضم الينا </a>
                             </li>
                             <li>
-                                <a href="#" title="">الشروط والأحكام</a>
+                                <a href="{{route('conditions')}}" title="">الشروط والأحكام</a>
                             </li>
                             <li>
-                                <a href="#" title="">سياسة الخصوصية</a>
+                                <a href="{{route('privacy')}}" title="">سياسة الخصوصية</a>
                             </li>
                         </ul>
                     </div>
@@ -215,13 +215,13 @@
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
                             <li>
-                                <a href="#" title="">سياسة البيع </a>
+                                <a href="{{route('buypolicy')}}" title="">سياسة البيع </a>
                             </li>
                             <li>
-                                <a href="#" title=""> سياسة الشراء</a>
+                                <a href="{{route('how_buy')}}" title=""> سياسة الشراء</a>
                             </li>
                             <li>
-                                <a href="#" title=""> الأسئلة الشائعة</a>
+                                <a href="{{route('faq')}}" title=""> الأسئلة الشائعة</a>
                             </li>
                         </ul>
                     </div>

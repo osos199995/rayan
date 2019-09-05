@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DayOffer;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,8 @@ class DayOfferController extends Controller
      */
     public function show($id)
     {
-        //
+        $best=Product::where('id',$id)->first();
+        return view('offer_details',compact('best'));
     }
 
     /**
@@ -55,7 +57,15 @@ class DayOfferController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     *
      */
+
+    public function dayoffershow(){
+        $offer=DayOffer::first();
+        return view('dayoffer_details',compact('offer'));
+    }
+
     public function edit($id)
     {
         //

@@ -29,7 +29,7 @@
                                 @endif
 
                             @endforeach
-                            <a href="#"> <h4>{{$dayoffer->name}}</h4> </a>
+                            <a href="{{route('dayoffer_details',$dayoffer->id)}}"> <h4>{{$dayoffer->name}}</h4> </a>
                             <a href="#" style="height: 75px; line-height: 75px;">
                                 <span class="btn btn-mod btn-block "><i class="fa fa-shopping-cart"></i> اطلب الان  </span>
                             </a>
@@ -146,7 +146,7 @@
 
                                     @endforeach
                                     <div class="widget-posts-descr">
-                                        <a href="#">{{$bestoffer->name}}</a>
+                                        <a href="{{route('best_offer_details',$bestoffer->id)}}">{{$bestoffer->name}}</a>
                                         <div>
                                              {{$bestoffer->price}}
                                         </div>
