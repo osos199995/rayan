@@ -17,11 +17,17 @@ Route::get('/', function () {
 
 
 Route::get('/','ProductController@index')->name('/');
+Route::get('/sortdown','ProductController@sortPriceDown')->name('/sortdown');
+Route::get('/sortup','ProductController@sortPriceUp')->name('/sortup');
 Route::get('best_offer','DayOfferController@index')->name('best_offer');
 Route::get('best_offer_details/{id}','DayOfferController@show')->name('best_offer_details');
 Route::get('categories/{id}','CategoryController@show')->name('categories');
 Route::get('product/{id}','ProductController@show')->name('product');
 Route::get('dayoffer_details','DayOfferController@dayoffershow')->name('dayoffer_details');
+Route::get('/filter','FilterController@generalFilter');
+
+
+
 
 
 Route::get('sailpolicy','HelpController@sailPolicy')->name('sailpolicy');
@@ -39,3 +45,7 @@ Route::get('policies','HelpController@Policy')->name('policies');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

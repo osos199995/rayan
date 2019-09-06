@@ -47,8 +47,19 @@
 
             <!-- Top Links -->
             <ul class="top-links right">
+                @if (Auth::user())
+{{--                    <li><a href="{{route('log_out')}}">تسجيل خروج</a></li>--}}
+                @endif
                  <li><a href="#">تسجيل دخول</a></li>
                 <li><a href="#">حساب جديد</a></li>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
             </ul>
             <!-- End Top Links -->
 

@@ -33,6 +33,24 @@ class ProductController extends Controller
 
     }
 
+    public function sortPriceDown(){
+//dd('test');
+        $dayoffer=DayOffer::first();
+        $products=Product::get()->take(2);
+        $allproducts=Product::all()->sortByDesc('price');
+        $bestoffers=Product::where('best_offer',1)->get()->take(5);
+return view('index',compact('allproducts','dayoffer','products','bestoffers'));
+    }
+
+    public function sortPriceUp(){
+//dd('test');
+        $dayoffer=DayOffer::first();
+        $products=Product::get()->take(2);
+        $allproducts=Product::all()->sortBy('price');
+        $bestoffers=Product::where('best_offer',1)->get()->take(5);
+        return view('index',compact('allproducts','dayoffer','products','bestoffers'));
+    }
+
     public function create()
     {
         //

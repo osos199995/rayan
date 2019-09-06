@@ -107,21 +107,22 @@
                         <h5 class="widget-title font-alt">بحث بالسعر</h5>
 
                         <div class="widget-body">
-                            <form method="post" action="#" class="form">
+                            {!! Form::open(['method'=>'get','action'=>['FilterController@generalFilter']]) !!}
 
                                 <div class="row mb-20">
                                     <div class="col-xs-6">
-                                        <input type="text" name="price-from" id="price-from" class="input-md round form-control" placeholder="من, ريال" maxlength="100">
+                                        <input type="text" name="min" id="price-from" class="input-md round form-control" placeholder="من, ريال" maxlength="100">
                                     </div>
 
                                     <div class="col-xs-6">
-                                        <input type="text" name="price-to" id="price-to" class="input-md round form-control" placeholder="الي, ريال" maxlength="100">
+                                        <input type="text" name="max" id="price-to" class="input-md round form-control" placeholder="الي, ريال" maxlength="100">
                                     </div>
                                 </div>
 
-                                <button class="btn btn-mod btn-medium btn-full btn-round">تصفية</button>
+                                <button type="submit" class="btn btn-mod btn-medium btn-full btn-round">تصفية</button>
 
-                            </form>
+                            {!! Form::close() !!}
+
                         </div>
 
                     </div>
@@ -265,16 +266,22 @@
                         </div>
 
                         <div class="left">
-                            <form method="post" action="#" class="form">
-                                <select class="input-md round">
-                                    <option>فرز تلقائي</option>
-                                    <option>فرز بالسعر : الارخص الي الأغلي</option>
-                                    <option>فرز بالسعر : الأغلي الي الارخص</option>
-                                </select>
-                            </form>
+   {!! Form::open(['method'=>'get','action'=>['ProductController@sortPriceDown']]) !!}
+                            <input type="submit" value="فرز بالسعر الاعلى الى الاقل">
+                            {!! Form::close() !!}
+                            {!! Form::open(['method'=>'get','action'=>['ProductController@sortPriceUp']]) !!}
+                            <input type="submit" value="فرز بالسعر الاقل الى الاعلى">
+
+
+
+                            {!! Form::close() !!}
                         </div>
 
+
+
+
                     </div>
+
                     <!-- End Shop options -->
 
 
@@ -317,7 +324,7 @@
 @endforeach
                     </div>
 
-                    {{ $allproducts->links() }}
+{{--                    {{ $allproducts->links() }}--}}
 
                 </div>
                 <!-- End Content -->
