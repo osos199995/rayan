@@ -123,14 +123,15 @@
                     <i class="fa fa-envelope-o ico_contct"></i> <a href="mailto:info@RayanFactory.com" class="link_contct">info@RayanFactory.com</a>
                 </div>
                 <div class="col-md-6">
-                    <form class="form-inline form" role="form">
-                        <div class="search-wrap">
+                    {!! Form::open(['method'=>'GET','action'=>'SearchController@search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+
+                    <div class="search-wrap">
                             <button class="search-button animate" type="submit" title="Start Search">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" class="form-control search-field" placeholder="ما الذي تبحث عنه ؟">
+                            <input  name="search" type="text" class="form-control search-field" placeholder="ما الذي تبحث عنه ؟">
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
 
             </div>

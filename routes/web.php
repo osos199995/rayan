@@ -25,7 +25,7 @@ Route::get('categories/{id}','CategoryController@show')->name('categories');
 Route::get('product/{id}','ProductController@show')->name('product');
 Route::get('dayoffer_details','DayOfferController@dayoffershow')->name('dayoffer_details');
 Route::get('/filter','FilterController@generalFilter');
-
+Route::get('/search','SearchController@search');
 
 
 
