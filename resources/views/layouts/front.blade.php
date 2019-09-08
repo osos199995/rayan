@@ -71,9 +71,9 @@
 
             <!-- Social Links -->
             <ul class="top-links left tooltip-bot" data-original-title="" title="">
-                <li><a href="#" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                <li><a href="{{setting('site.face_book')}}" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="{{setting('site.twitter')}}" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{setting('site.behance')}}" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
             </ul>
             <!-- End Social Links -->
 
@@ -136,10 +136,10 @@
             <div class="row">
 
                 <div class="col-md-3">
-                    <i class="fa fa-headphones ico_contct"></i> <a href="tel:0114985184" class="link_contct">0114985184</a>
+                    <i class="fa fa-headphones ico_contct"></i> <a href="tel:0114985184" class="link_contct">{{setting('site.phone')}}</a>
                 </div>
                 <div class="col-md-3">
-                    <i class="fa fa-envelope-o ico_contct"></i> <a href="mailto:info@RayanFactory.com" class="link_contct">info@RayanFactory.com</a>
+                    <i class="fa fa-envelope-o ico_contct"></i> <a href="{{setting('site.website_link')}}" class="link_contct">{{setting('site.website_link')}}</a>
                 </div>
                 <div class="col-md-6">
                     {!! Form::open(['method'=>'GET','action'=>'SearchController@search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
@@ -196,7 +196,7 @@
 
                             <ul class="clearlist widget-menu">
                                 <li>
-                                    <a href="{{route('sailpolicy')}}" title="">مركز المساعدة  </a>
+                                    <a href="{{route('help_center')}}" title="">مركز المساعدة  </a>
                                 </li>
                                 <li>
                                     <a href="{{route('how_buy')}}" title="">كيفية عمل طلب شراء  </a>
@@ -249,7 +249,7 @@
                                 <a href="{{route('buypolicy')}}" title="">سياسة البيع </a>
                             </li>
                             <li>
-                                <a href="{{route('how_buy')}}" title=""> سياسة الشراء</a>
+                                <a href="{{route('sailpolicy')}}" title=""> سياسة الشراء</a>
                             </li>
                             <li>
                                 <a href="{{route('faq')}}" title=""> الأسئلة الشائعة</a>
