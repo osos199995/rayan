@@ -50,16 +50,22 @@
                 @if (Auth::user())
 {{--                    <li><a href="{{route('log_out')}}">تسجيل خروج</a></li>--}}
                 @endif
-                 <li><a href="#">تسجيل دخول</a></li>
-                <li><a href="#">حساب جديد</a></li>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
+                @guest
+                 <li><a href="{{route('login')}}">تسجيل دخول</a></li>
+                    @endguest
+
+                <li><a href="{{route('register')}}">حساب جديد</a></li>
+
+                    @auth
+                   <li><a class="dropdown-item" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+                           {{ __('الخروج من الحساب') }}
+                       </a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
+                        @endauth
             </ul>
             <!-- End Top Links -->
 
@@ -86,15 +92,28 @@
                 </div>
                 <!-- Main Menu -->
                 <div class="inner-nav desktop-nav">
+
                     <ul class="clearlist scroll-nav local-scroll">
+
                         <li class="active"><a href="{{route('/')}}" style="height: 75px; line-height: 75px;">الرئيسية</a></li>
                         <li><a href="{{route('best_offer')}}" style="height: 75px; line-height: 75px;">افضل العروض</a></li>
-                        @foreach($categories as $category)
-                        <li><a href="{{route('categories',$category->id)}}" style="height: 75px; line-height: 75px;">الاقسام</a></li>
+{{--                        @foreach($categories as $category)--}}
+{{--                        <li><a href="{{route('categories',$category->id)}}" style="height: 75px; line-height: 75px;">الاقسام</a></li>--}}
 
 
-@endforeach
 
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                              الاقسام
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                @foreach($categories as $category)
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('categories',$category->id)}}">{{$category->name}}</a></li>
+
+                                @endforeach
+                            </ul>
+                        </div>
 
 {{--                        <li><a href="#" style="height: 75px; line-height: 75px;">الخدمات</a></li>--}}
 {{--                        <li><a href="#" style="height: 75px; line-height: 75px;">المتجر</a></li>--}}
@@ -252,17 +271,17 @@
                     <div class="widget-body">
                         <div class="widget-text clearfix">
 
-                            <form class="form" id="mailchimp" novalidate="true">
+                            {!! Form::open(['method'=>'post','action'=>'MailPost@store','files'=>true,'class'=>'left_form']) !!}
 
                                 <div class="mb-20">ابق علي اتصال دائم لا تقلق لن نرسل لك سبام.</div>
 
                                 <div class="mb-20">
-                                    <input placeholder="ادخل البريد الالكتروني" class="form-control input-md round mb-10" type="email" pattern=".{5,100}" required="" name="EMAIL">
+                                    <input placeholder="ادخل البريد الالكتروني" class="form-control input-md round mb-10" type="email" pattern=".{5,100}" required="" name="email">
                                     <button type="submit" class="btn btn-mod btn-gray btn-medium btn-round form-control mb-xs-10">اشتراك</button>
                                 </div>
 
                                 <div id="subscribe-result"></div>
-                            </form>
+                            {!! Form::close()!!}
 
                         </div>
                     </div>

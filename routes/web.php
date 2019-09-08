@@ -26,8 +26,9 @@ Route::get('product/{id}','ProductController@show')->name('product');
 Route::get('dayoffer_details','DayOfferController@dayoffershow')->name('dayoffer_details');
 Route::get('/filter','FilterController@generalFilter');
 Route::get('/search','SearchController@search');
-
-
+Route::delete('/unsaved/{id}','SavedController@destroy')->name('unsaved');
+Route::post('/saved','SavedController@store');
+Route::post('/mail','MailPost@store');
 
 
 Route::get('sailpolicy','HelpController@sailPolicy')->name('sailpolicy');

@@ -243,7 +243,7 @@
                                 <div class="post-prev-img">
 @foreach(json_decode($productcategory->images) as $image)
     @if ($image)
-                                            <a href="#"><img src="{{Voyager::image($image)}}" alt="" /></a>
+                                            <a href="{{route('product',[$productcategory->id])}}"><img src="{{Voyager::image($image)}}" alt="" /></a>
         @break
     @endif
 
@@ -255,7 +255,7 @@
                                 </div>
 
                                 <div class="post-prev-title font-alt align-center">
-                                    <a href="#">{{$productcategory->name}}</a>
+                                    <a href="{{route('product',[$productcategory->id])}}">{{$productcategory->name}}</a>
                                 </div>
 
                                 <div class="post-prev-text align-center">

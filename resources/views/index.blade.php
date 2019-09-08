@@ -39,68 +39,67 @@
                     </div>
 
 
+@auth
 
-{{--                    <!-- Widget -->--}}
-{{--                    <div class="widget">--}}
 
-{{--                        <h5 class="widget-title font-alt">مشتريات</h5>--}}
 
-{{--                        <div class="widget-body">--}}
-{{--                            <ul class="clearlist widget-posts">--}}
+                    <!-- Widget -->
+                    <div class="widget">
 
-{{--                                <!-- Preview item -->--}}
-{{--                                <li class="clearfix">--}}
-{{--                                    <a href=""><img src="images/shop/shop-prev-1.jpg" alt="" class="widget-posts-img" /></a>--}}
-{{--                                    <div class="widget-posts-descr">--}}
-{{--                                        <a href="#">ماكينة غزل البنات وسط</a>--}}
-{{--                                        <div>--}}
-{{--                                            1250 ريال--}}
-{{--                                        </div>--}}
-{{--                                        <div>--}}
-{{--                                            <a href=""><i class="fa fa-times"></i> حذف</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </li>--}}
-{{--                                <!-- End Preview item -->--}}
+                        <h5 class="widget-title font-alt">مشتريات</h5>
+                        @foreach ($savedproducts as $savedproduct)
+                        <div class="widget-body">
+                            <ul class="clearlist widget-posts">
 
-{{--                                <!-- Preview item -->--}}
-{{--                                <li class="clearfix">--}}
-{{--                                    <a href=""><img src="images/shop/shop-prev-7.jpg" alt="" class="widget-posts-img" /></a>--}}
-{{--                                    <div class="widget-posts-descr">--}}
-{{--                                        <a href="#">سخان كريب كهرباء مدور دبل</a>--}}
-{{--                                        <div>--}}
-{{--                                            1000 ريال--}}
-{{--                                        </div>--}}
-{{--                                        <div>--}}
-{{--                                            <a href=""><i class="fa fa-times"></i> حذف</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </li>--}}
-{{--                                <!-- End Preview item -->--}}
+                                <!-- Preview item -->
+                                <li class="clearfix">
 
-{{--                            </ul>--}}
 
-{{--                            <div class="clearfix mt-20">--}}
+                                    @foreach(json_decode($savedproduct->product->images) as $iamge)
 
-{{--                                <div class="right mt-10">--}}
-{{--                                    الكل : <strong> 2250 ريال</strong>--}}
-{{--                                </div>--}}
+                                        @if ($image)
 
-{{--                                <div class="left">--}}
-{{--                                    <a href="#" class="btn btn-mod btn-border btn-small btn-round"> شاهد العربة </a>--}}
-{{--                                </div>--}}
 
-{{--                            </div>--}}
+                                            <a href=""><img src="{{Voyager::image($image)}}" alt="" class="widget-posts-img" /></a>
 
-{{--                            <div>--}}
+                                        @endif
+                                        @break
 
-{{--                            </div>--}}
+@endforeach
 
-{{--                        </div>--}}
 
-{{--                    </div>--}}
-{{--                    <!-- End Widget -->--}}
+                                    <div class="widget-posts-descr">
+                                        <a href="#">{{$savedproduct->product_name}}</a>
+                                        <div>
+                                            {{$savedproduct->price}} ريال
+                                        </div>
+                                        <div>
+{{--                                <a href="{{route('unsaved',[$savedproduct->id])}}"><i class="fa fa-times"></i> حذف</a>--}}
+                                        </div>
+                                        {!! Form::open(['method'=>'DELETE','action'=>['SavedController@destroy',$savedproduct->product_id],'files'=>true]) !!}
+                                        <input type="hidden" name="product_id" value="{{$savedproduct->product_id}}">
+                                        <button  type="submit" style="border: 0px; margin: 0px; background: #ffffff"> <span class="wish-icon"><i class="fa fa-times"></i></span></button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </li>
+                                <!-- End Preview item -->
 
+
+
+                            </ul>
+
+
+
+                            <div>
+
+                            </div>
+
+                        </div>
+                            <!-- End Widget -->
+                            @endforeach
+                    </div>
+
+@endauth
                     <!-- Widget -->
                     <div class="widget">
 
@@ -227,12 +226,15 @@
 
                                     <div class="intro-label">
                                         <span class="label label-danger bg-red">{{$product->price}}</span>
+
                                     </div>
+
 
                                 </div>
 
                                 <div class="post-prev-title font-alt align-center">
                                     <a href="#">{{$product->name}}</a>
+
                                 </div>
 
                                 <div class="post-prev-text align-center">
@@ -267,10 +269,10 @@
 
                         <div class="left">
    {!! Form::open(['method'=>'get','action'=>['ProductController@sortPriceDown']]) !!}
-                            <input type="submit" value="فرز بالسعر الاعلى الى الاقل">
+                            <input type="submit" value="فرز بالسعر الاعلى الى الاقل" class="btn-danger">
                             {!! Form::close() !!}
                             {!! Form::open(['method'=>'get','action'=>['ProductController@sortPriceUp']]) !!}
-                            <input type="submit" value="فرز بالسعر الاقل الى الاعلى">
+                            <input type="submit" class="btn-info" value="فرز بالسعر الاقل الى الاعلى">
 
 
 
@@ -295,7 +297,7 @@
 @foreach (json_decode($product->images) as $image)
                                         @if ($image)
 
-                                    <a href="#"><img src="{{Voyager::image($image)}}" alt="" /></a>
+                                    <a href="{{route('product',$product->id)}}"><img src="{{Voyager::image($image)}}" alt="" /></a>
                                         @break
                                         @endif
                                     @endforeach
@@ -306,7 +308,10 @@
                                 </div>
 
                                 <div class="post-prev-title font-alt align-center">
-                                    <a href="{{route('product',$product->id)}}#">{{$product->name}}</a>
+                                    <a href="{{route('product',$product->id)}}">{{$product->name}}</a>
+                                    @auth
+                                    @include('partials.favourite',['product_id'=>$product->id])
+@endauth
                                 </div>
 
                                 <div class="post-prev-text align-center">

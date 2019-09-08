@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DayOffer;
 use App\Product;
+use App\SavedProducts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -17,9 +19,10 @@ class ProductController extends Controller
 
            $dayoffer=DayOffer::first();
      $products=Product::get()->take(2);
+$savedproducts=SavedProducts::where('user_id',Auth::id())->get();
      $allproducts=Product::paginate(9);
      $bestoffers=Product::where('best_offer',1)->get()->take(5);
-     return view('index',compact('products','allproducts','bestoffers','dayoffer'));
+     return view('index',compact('products','allproducts','bestoffers','dayoffer','savedproducts'));
     }
 
     /**
@@ -35,20 +38,24 @@ class ProductController extends Controller
 
     public function sortPriceDown(){
 //dd('test');
+        $savedproducts=SavedProducts::where('user_id',Auth::id())->get();
+
         $dayoffer=DayOffer::first();
         $products=Product::get()->take(2);
         $allproducts=Product::all()->sortByDesc('price');
         $bestoffers=Product::where('best_offer',1)->get()->take(5);
-return view('index',compact('allproducts','dayoffer','products','bestoffers'));
+return view('index',compact('allproducts','dayoffer','products','bestoffers','savedproducts'));
     }
 
     public function sortPriceUp(){
 //dd('test');
+        $savedproducts=SavedProducts::where('user_id',Auth::id())->get();
+
         $dayoffer=DayOffer::first();
         $products=Product::get()->take(2);
         $allproducts=Product::all()->sortBy('price');
         $bestoffers=Product::where('best_offer',1)->get()->take(5);
-        return view('index',compact('allproducts','dayoffer','products','bestoffers'));
+        return view('index',compact('allproducts','dayoffer','products','bestoffers','savedproducts'));
     }
 
     public function create()
