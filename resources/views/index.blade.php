@@ -45,7 +45,7 @@
                     <!-- Widget -->
                     <div class="widget">
 
-                        <h5 class="widget-title font-alt">مشتريات</h5>
+                        <h5 class="widget-title font-alt">المنتجات المفضلة</h5>
                         @foreach ($savedproducts as $savedproduct)
                         <div class="widget-body">
                             <ul class="clearlist widget-posts">
@@ -310,7 +310,7 @@
                                     <a href="{{route('product',$product->id)}}">{{$product->name}}</a>
                                     @auth
                                     @include('partials.favourite',['product_id'=>$product->id])
-@endauth
+                                @endauth
                                 </div>
 
                                 <div class="post-prev-text align-center">

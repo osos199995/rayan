@@ -33,9 +33,15 @@
 
                     <div class="row">
 @foreach(json_decode($product->images) as $image)
+
+
                         <div class="col-xs-3 post-prev-img">
-                            <a href="{{Voyager::image($image)}}" class="lightbox-gallery-3 mfp-image">
-                                <img src="{{Voyager::image($image)}}" alt="" style="height: 80px"></a>
+
+                            <a href="{{Voyager::image($image)}}" class="lightbox-gallery-{{count(json_decode($product->images))}} mfp-image">
+
+                            <img src="{{Voyager::image($image)}}" alt="" style="height: 80px"></a>
+
+
                         </div>
 
                      @endforeach

@@ -6,6 +6,7 @@ use App\DayOffer;
 use App\Orders;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -63,7 +64,7 @@ $product=Product::where('id',$id)->first();
             'qty'=>$qty,
         ]);
 
-
+        Session::flash('success',' تهانينا قد تم تقديم طلبك وسيتم التواصل معك قريبا');
         return redirect()->back();
     }
 
@@ -97,7 +98,7 @@ $product=Product::where('id',$id)->first();
             'qty'=>$qty,
         ]);
 
-
+        Session::flash('success','  تهانينا قد تم تقديم طلبك وسيتم التواصل معك قريبا');
         return redirect()->back();
     }
 

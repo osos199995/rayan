@@ -51,7 +51,7 @@
 @foreach(json_decode($best->images) as $image)
 
     @if ($image)
-                                            <a href="#"><img src="{{Voyager::image($image)}}" alt="" /></a>
+                                            <a href="{{route('product',$best->id)}}"><img src="{{Voyager::image($image)}}" alt="" /></a>
    @break
     @endif
 
@@ -63,7 +63,7 @@
                                 </div>
 
                                 <div class="post-prev-title font-alt align-center">
-                                    <a href="#">{{$best->name}}</a>
+                                    <a href="{{route('product',$best->id)}}">{{$best->name}}</a>
                                 </div>
 
                                 <div class="post-prev-text align-center">

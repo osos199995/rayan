@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
-    <title>متجر مصنع الريان لمعدات المطاعم والمطابخ الالكتروني</title>
+    <title>{{setting('site.title')}}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta charset="utf-8">
@@ -96,7 +96,7 @@
                 <!-- Logo ( * your text or image into link tag *) -->
                 <div class="nav-logo-wrap local-scroll">
                     <a href="{{route('/')}}" class="logo">
-                        <img src="{{asset('front_assets/images/logo.png')}}" alt="">
+                        <img src="{{Voyager::image(setting('site.logo'))}}" alt="">
                     </a>
                 </div>
                 <div class="mobile-nav" style="height: 75px; line-height: 75px; width: 75px;">

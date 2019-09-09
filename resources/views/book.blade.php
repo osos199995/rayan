@@ -6,6 +6,13 @@
 
 
 @section('content')
+    @if (Session::has('success'))
+        <div class="alert alert-success" style="    background-color: #88b95c;
+    color: #fff;
+    text-align: center;">{{ Session::get('success') }}</div>
+    @elseif(Session::has('danger'))
+        <div class="alert alert-danger">{{ Session::get('danger') }}</div>
+    @endif
     <section class="page-section">
 
         <div class="container-fluid content">

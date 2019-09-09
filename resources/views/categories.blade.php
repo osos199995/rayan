@@ -201,8 +201,6 @@
 
                 <!-- Content -->
                 <div class="col-sm-9">
-
-
                     <!-- Shop options -->
                     <div class="clearfix mb-40 mt-40">
                         <hr/>
@@ -218,19 +216,6 @@
                                 @endif
                                 @endforeach
 
-                        </div>
-
-{{--                        <div class="left">--}}
-{{--                            <form method="post" action="#" class="form">--}}
-{{--                                <select class="input-md round">--}}
-{{--                                    <option>فرز تلقائي</option>--}}
-{{--                                    <option>فرز بالسعر : الارخص الي الأغلي</option>--}}
-{{--                                    <option>فرز بالسعر : الأغلي الي الارخص</option>--}}
-{{--                                </select>--}}
-{{--                            </form>--}}
-{{--                        </div>--}}
-
-                    </div>
                     <!-- End Shop options -->
 
 
@@ -259,7 +244,7 @@
                                 </div>
 
                                 <div class="post-prev-text align-center">
-                                    <p>{{str_limit($productcategory->description,30)}}</p>
+                                    <p>{{str_limit($productcategory->description,10)}}</p>
                                 </div>
 
                                 <div class="post-prev-more align-center">
@@ -279,7 +264,7 @@
                     </div>
 
                     {{ $productcategories->links() }}
-                </div>
+                     </div>
                 <!-- End Content -->
 
             </div>
