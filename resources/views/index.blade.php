@@ -30,9 +30,8 @@
 
                             @endforeach
                             <a href="{{route('dayoffer_details',$dayoffer->id)}}"> <h4>{{$dayoffer->name}}</h4> </a>
-                            <a href="#" style="height: 75px; line-height: 75px;">
-                                <span class="btn btn-mod btn-block "><i class="fa fa-shopping-cart"></i> اطلب الان  </span>
-                            </a>
+
+                                <a href="{{route('bookdayoffer',[$dayoffer->id])}}" class="btn btn-mod  btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان </a>                            </a>
 
 
                         </div>
@@ -55,21 +54,21 @@
                                 <li class="clearfix">
 
 
-                                    @foreach(json_decode($savedproduct->product->images) as $iamge)
+{{--                                    @foreach(json_decode($savedproduct->product->images) as $iamge)--}}
 
-                                        @if ($image)
+{{--                                        @if ($image)--}}
 
 
-                                            <a href=""><img src="{{Voyager::image($image)}}" alt="" class="widget-posts-img" /></a>
+{{--                                            <a href=""><img src="{{Voyager::image($image)}}" alt="" class="widget-posts-img" /></a>--}}
 
-                                        @endif
-                                        @break
+{{--                                        @endif--}}
+{{--                                        @break--}}
 
-@endforeach
+{{--@endforeach--}}
 
 
                                     <div class="widget-posts-descr">
-                                        <a href="#">{{$savedproduct->product_name}}</a>
+                                        <a href="{{route('product',[$savedproduct->product_id])}}">{{$savedproduct->product_name}}</a>
                                         <div>
                                             {{$savedproduct->price}} ريال
                                         </div>
@@ -207,20 +206,20 @@
                 <div class="col-sm-9">
 
                     <div class="row mb-50 mt-50">
-@foreach($products as $product)
-                        <div class="col-sm-6">
-                            <h3 class="blog-item-title font-alt mb-10"><a href="#">{{$product->category->name}}</a></h3>
-                            <hr class="mt-0 mb-30">
-                            <!-- Item -->
-                            <div style="margin-bottom:20px;">
+                        @foreach($products as $product)
+                            <div class="col-sm-6">
+                                <h3 class="blog-item-title font-alt mb-10"><a href="#">{{$product->category->name}}</a></h3>
+                                <hr class="mt-0 mb-30">
+                                <!-- Item -->
+                                <div style="margin-bottom:20px;">
 
-                                <div class="post-prev-img">
-@foreach(json_decode($product->images) as $image)
-    @if ($image)
-                                            <a href="#"><img src="{{ Voyager::image($image) }}" alt="sada"></a>
-@break
-                                        @endif
-                                    @endforeach
+                                    <div class="post-prev-img">
+                                        @foreach(json_decode($product->images) as $image)
+                                            @if ($image)
+                                                <a href="#"><img src="{{ Voyager::image($image) }}" alt="sada"></a>
+                                                @break
+                                            @endif
+                                        @endforeach
 
 
 
@@ -238,11 +237,11 @@
                                 </div>
 
                                 <div class="post-prev-text align-center">
-                                    <p>{{$product->description}}</p>
+                                    <p>{{str_limit($product->description,30)}}</p>
                                 </div>
 
                                 <div class="post-prev-more align-center">
-                                    <a href="#" class="btn btn-mod  btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان </a>
+                                    <a href="{{route('book',[$product->id])}}" class="btn btn-mod  btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان </a>
                                 </div>
 
                             </div>
@@ -315,11 +314,11 @@
                                 </div>
 
                                 <div class="post-prev-text align-center">
-                                    <p>{{$product->desription}}</p>
+                                    <p>{{str_limit($product->desription,30)}}</p>
                                 </div>
 
                                 <div class="post-prev-more align-center">
-                                    <a href="#" class="btn btn-mod btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان</a>
+                                    <a href="{{route('book',[$product->id])}}" class="btn btn-mod btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان</a>
                                 </div>
 
                             </div>
@@ -329,7 +328,7 @@
 @endforeach
                     </div>
 
-{{--                    {{ $allproducts->links() }}--}}
+                    {{ $allproducts->links("pagination::bootstrap-4") }}
 
                 </div>
                 <!-- End Content -->

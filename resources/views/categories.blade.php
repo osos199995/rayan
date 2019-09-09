@@ -220,15 +220,15 @@
 
                         </div>
 
-                        <div class="left">
-                            <form method="post" action="#" class="form">
-                                <select class="input-md round">
-                                    <option>فرز تلقائي</option>
-                                    <option>فرز بالسعر : الارخص الي الأغلي</option>
-                                    <option>فرز بالسعر : الأغلي الي الارخص</option>
-                                </select>
-                            </form>
-                        </div>
+{{--                        <div class="left">--}}
+{{--                            <form method="post" action="#" class="form">--}}
+{{--                                <select class="input-md round">--}}
+{{--                                    <option>فرز تلقائي</option>--}}
+{{--                                    <option>فرز بالسعر : الارخص الي الأغلي</option>--}}
+{{--                                    <option>فرز بالسعر : الأغلي الي الارخص</option>--}}
+{{--                                </select>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
 
                     </div>
                     <!-- End Shop options -->
@@ -259,11 +259,11 @@
                                 </div>
 
                                 <div class="post-prev-text align-center">
-                                    <p>{{$productcategory->description}}</p>
+                                    <p>{{str_limit($productcategory->description,30)}}</p>
                                 </div>
 
                                 <div class="post-prev-more align-center">
-                                    <a href="#" class="btn btn-mod btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان </a>
+                                    <a href="{{route('book',[$productcategory->id])}}" class="btn btn-mod btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان </a>
                                 </div>
 
                             </div>

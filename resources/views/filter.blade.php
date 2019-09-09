@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان</a>
+                            <a href="{{route('book',[$product->id])}}" class="btn btn-mod btn-round"><i class="fa fa-shopping-cart"></i> اطلب الان</a>
                         </div>
 
                     </div>

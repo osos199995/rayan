@@ -104,7 +104,7 @@
                     <div class="mb-30">
                         <form method="post" action="#" class="form">
 
-                            <a href="#" class="btn btn-mod btn-large btn-round">اطلب الان </a>
+                            <a href="{{route('book',[$product->id])}}" class="btn btn-mod btn-large btn-round">اطلب الان </a>
                         </form>
                     </div>
 
@@ -128,8 +128,8 @@
                             <div class="alt-service-icon">
                                 <i class="fa fa-paper-plane-o"></i>
                             </div>
-                            <h3 class="alt-services-title font-alt">شحن مجاني</h3>
-                            أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
+                            <h3 class="alt-services-title font-alt">{{setting('site.advertising_title_1')}}</h3>
+                            {{setting('site.advertising_description_1')}}
                         </div>
                     </div>
                     <!-- End Features Item -->
@@ -140,8 +140,8 @@
                             <div class="alt-service-icon">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <h3 class="alt-services-title font-alt">14 يوم استعادة الاموال</h3>
-                            أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
+                            <h3 class="alt-services-title font-alt">{{setting('site.advertising_title_2')}}</h3>
+                            {{setting('site.advertising_description_2')}}
                         </div>
                     </div>
                     <!-- End Features Item -->
@@ -152,8 +152,8 @@
                             <div class="alt-service-icon">
                                 <i class="fa fa-gift"></i>
                             </div>
-                            <h3 class="alt-services-title font-alt">100% منتجات أصلية</h3>
-                            أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
+                            <h3 class="alt-services-title font-alt">{{setting('site.advertising_title_3')}}</h3>
+                            {{setting('site.advertising_description_3')}}
                         </div>
                     </div>
                     <!-- End Features Item -->

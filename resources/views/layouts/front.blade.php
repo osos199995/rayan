@@ -14,7 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{asset('front_assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/frront_assets/css/bootstrap-rtl.min.css')}}">
+    <link rel="stylesheet" href="{{asset('front_assets/css/bootstrap-rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('front_assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('front_assets/css/style-responsive.css')}}">
     <link rel="stylesheet" href="{{asset('front_assets/css/animate.min.css')}}">
@@ -24,8 +24,20 @@
     <link rel="stylesheet" href="{{asset('front_assets/css/custom.css')}}">
     <script src="https://use.fontawesome.com/e02e8b858c.js"></script>
 
+{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
+{{--<style>--}}
+{{--    ul{--}}
+{{--        list-style-type: none;--}}
+{{--    }--}}
+{{--    li {--}}
+{{--        display: inline-block;--}}
+{{--    }--}}
+{{--</style>--}}
+
 
 </head>
+
+
 
 @yield('styles')
 
@@ -83,7 +95,7 @@
             <div class="container relative clearfix">
                 <!-- Logo ( * your text or image into link tag *) -->
                 <div class="nav-logo-wrap local-scroll">
-                    <a href="index.html" class="logo">
+                    <a href="{{route('/')}}" class="logo">
                         <img src="{{asset('front_assets/images/logo.png')}}" alt="">
                     </a>
                 </div>

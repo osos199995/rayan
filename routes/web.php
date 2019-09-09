@@ -30,6 +30,13 @@ Route::delete('/unsaved/{id}','SavedController@destroy')->name('unsaved');
 Route::post('/saved','SavedController@store');
 Route::post('/mail','MailPost@store');
 
+Route::get('/book/{id}','BookController@show')->name('book');
+Route::post('/book/{id}','BookController@store');
+
+Route::get('/bookdayoffer/{id}','BookController@showdayoffer')->name('bookdayoffer');
+Route::post('/bookdayoffer/{id}','BookController@storedayoffer');
+
+
 
 Route::get('sailpolicy','HelpController@sailPolicy')->name('sailpolicy');
 Route::get('buypolicy','HelpController@buyPolicy')->name('buypolicy');

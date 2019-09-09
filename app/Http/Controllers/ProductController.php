@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\DayOffer;
 use App\Product;
 use App\SavedProducts;
@@ -37,25 +38,31 @@ $savedproducts=SavedProducts::where('user_id',Auth::id())->get();
     }
 
     public function sortPriceDown(){
-//dd('test');
+
         $savedproducts=SavedProducts::where('user_id',Auth::id())->get();
 
         $dayoffer=DayOffer::first();
         $products=Product::get()->take(2);
-        $allproducts=Product::all()->sortByDesc('price');
+        $allproducts=Product::orderBy('price','ASC')->paginate(9);
+//        dd($allproducts);
         $bestoffers=Product::where('best_offer',1)->get()->take(5);
-return view('index',compact('allproducts','dayoffer','products','bestoffers','savedproducts'));
+return view('sortdown',compact('allproducts','dayoffer','products','bestoffers','savedproducts'));
     }
 
     public function sortPriceUp(){
-//dd('test');
+
         $savedproducts=SavedProducts::where('user_id',Auth::id())->get();
 
         $dayoffer=DayOffer::first();
         $products=Product::get()->take(2);
-        $allproducts=Product::all()->sortBy('price');
+
+//        $allproducts=Product::all()->sortBy('price');
+        $allproducts=Product::orderBy('price','DESC')->paginate(9);
+
+
+
         $bestoffers=Product::where('best_offer',1)->get()->take(5);
-        return view('index',compact('allproducts','dayoffer','products','bestoffers','savedproducts'));
+        return view('sortup',compact('allproducts','dayoffer','products','bestoffers','savedproducts'));
     }
 
     public function create()
