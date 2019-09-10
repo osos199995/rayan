@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('front_assets/css/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('front_assets/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{asset('front_assets/css/custom.css')}}">
+    <script type="text/javascript" src="{{asset('front_assets/js/jquery-1.11.2.min.js')}}"></script>
+
     <script src="https://use.fontawesome.com/e02e8b858c.js"></script>
 
 {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
@@ -60,18 +62,19 @@
             <!-- Top Links -->
             <ul class="top-links right">
                 @if (Auth::user())
-{{--                    <li><a href="{{route('log_out')}}">تسجيل خروج</a></li>--}}
+{{--                    <li><a href="{{route('logout')}}">تسجيل خروج</a></li>--}}
                 @endif
                 @guest
                  <li><a href="{{route('login')}}">تسجيل دخول</a></li>
+                        <li><a href="{{route('register')}}">حساب جديد</a></li>
                     @endguest
 
-                <li><a href="{{route('register')}}">حساب جديد</a></li>
+
 
                     @auth
                    <li><a class="dropdown-item" href="{{ route('logout') }}"
                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                             document.getElementById('logout-form').submit();">
                            {{ __('الخروج من الحساب') }}
                        </a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -91,56 +94,102 @@
 
         </div>
     </div>
-    <div id="sticky-wrapper" class="sticky-wrapper" style="height: 75px;"><nav class="main-nav js-stick" style="">
-            <div class="container relative clearfix">
-                <!-- Logo ( * your text or image into link tag *) -->
-                <div class="nav-logo-wrap local-scroll">
-                    <a href="{{route('/')}}" class="logo">
-                        <img src="{{Voyager::image(setting('site.logo'))}}" alt="">
-                    </a>
-                </div>
-                <div class="mobile-nav" style="height: 75px; line-height: 75px; width: 75px;">
-                    <i class="fa fa-bars"></i>
-                </div>
-                <!-- Main Menu -->
-                <div class="inner-nav desktop-nav">
 
-                    <ul class="clearlist scroll-nav local-scroll">
 
-                        <li class="active"><a href="{{route('/')}}" style="height: 75px; line-height: 75px;">الرئيسية</a></li>
-                        <li><a href="{{route('best_offer')}}" style="height: 75px; line-height: 75px;">افضل العروض</a></li>
+    <div id="sticky-wrapper" class="sticky-wrapper" style="height: 75px;">
+
+{{--        <nav class="main-nav js-stick" style="">--}}
+{{--            <div class="container relative clearfix">--}}
+{{--                <!-- Logo ( * your text or image into link tag *) -->--}}
+{{--                <div class="nav-logo-wrap local-scroll">--}}
+{{--                    <a href="{{route('/')}}" class="logo">--}}
+{{--                        <img src="{{Voyager::image(setting('site.logo'))}}" alt="">--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="mobile-nav" style="height: 75px; line-height: 75px; width: 75px;">--}}
+{{--                    <i class="fa fa-bars"></i>--}}
+{{--                </div>--}}
+{{--                <!-- Main Menu -->--}}
+
+
+
+{{--                <div class="inner-nav desktop-nav">--}}
+
+{{--                    <ul class="clearlist scroll-nav local-scroll">--}}
+
+{{--                        <li class="active"><a href="{{route('/')}}" style="height: 75px; line-height: 75px;">الرئيسية</a></li>--}}
+{{--                        <li><a href="{{route('best_offer')}}" style="height: 75px; line-height: 75px;">افضل العروض</a></li>--}}
 {{--                        @foreach($categories as $category)--}}
 {{--                        <li><a href="{{route('categories',$category->id)}}" style="height: 75px; line-height: 75px;">الاقسام</a></li>--}}
 
 
 
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                              الاقسام
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                @foreach($categories as $category)
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('categories',$category->id)}}">{{$category->name}}</a></li>
+{{--                        <div class="dropdown">--}}
+{{--                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">--}}
+{{--                              الاقسام--}}
+{{--                                <span class="caret"></span>--}}
+{{--                            </button>--}}
+{{--                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">--}}
+{{--                                @foreach($categories as $category)--}}
+{{--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('categories',$category->id)}}">{{$category->name}}</a></li>--}}
 
-                                @endforeach
-                            </ul>
-                        </div>
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
 
 {{--                        <li><a href="#" style="height: 75px; line-height: 75px;">الخدمات</a></li>--}}
 {{--                        <li><a href="#" style="height: 75px; line-height: 75px;">المتجر</a></li>--}}
 {{--                        <li><a href="#" style="height: 75px; line-height: 75px;">المعرض</a></li>--}}
 {{--                        <li><a href="#" style="height: 75px; line-height: 75px;">تواصل معنا</a></li>--}}
-                        <li>
-                            <!-- End Sub -->
+{{--                        <li>--}}
+{{--                            <!-- End Sub -->--}}
 
-                        </li>
-                        <!-- End Button -->
+{{--                        </li>--}}
+{{--                        <!-- End Button -->--}}
 
-                    </ul>
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </nav>--}}
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="nav-logo-wrap local-scroll">
+                    <a href="{{route('/')}}" class="logo">
+                        <img src="{{Voyager::image(setting('site.logo'))}}" alt="">
+                    </a>
                 </div>
-            </div>
-        </nav></div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+{{--                    <a class="navbar-brand" href="{{route('/')}}">الريان</a>--}}
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{route('/')}}">الرئيسية <span class="sr-only">(current)</span></a></li>
+                        <li><a href="{{route('best_offer')}}"> افضل العروض</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">الاقسام <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @foreach($categories as $category)
+                                <li><a href="{{route('categories',$category->id)}}">{{$category->name}}</a></li>
+@endforeach
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+    </div>
     <!-- Head Section -->
     <section class="small-section" style="background: #e63b03;padding: 20px 0;">
         <div class="relative container align-right">
@@ -336,7 +385,7 @@
 
 
 <!-- JS -->
-<script type="text/javascript" src="{{asset('front_assets/js/jquery-1.11.2.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/jquery.easing.1.3.js')}}"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/SmoothScroll.js')}}"></script>
@@ -349,7 +398,6 @@
 <script type="text/javascript" src="{{asset('front_assets/js/jquery.parallax-1.1.3.js')}}"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/jquery.fitvids.js')}}"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/owl.carousel.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('front_assets/js/owl.carousel.min.js')}}x"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/imagesloaded.pkgd.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('front_assets/js/jquery.magnific-popup.min.js')}}"></script>
 <!-- Replace test API Key "AIzaSyAZsDkJFLS0b59q7cmW0EprwfcfUA8d9dg" with your own one below
